@@ -12,81 +12,81 @@ CP5 - Banco de Dados - Tema: Posto de Gasolina
 
 /* CREATES TABLES */
 CREATE TABLE bomba (
-    idbomba                   NUMBER(4) PRIMARY KEY,
-    tipobomba                 VARCHAR2(50),
-    statusbomba               VARCHAR2(20),
-    combustivel_idcombustivel  NUMBER(4) NOT NULL,
-    tanque_idtanque           NUMBER(4) NOT NULL
+    idbomba NUMBER(4) PRIMARY KEY,
+    tipobomba VARCHAR2(50),
+    statusbomba VARCHAR2(20),
+    combustivel_idcombustivel NUMBER(4) NOT NULL,
+    tanque_idtanque NUMBER(4) NOT NULL
 );
 
 CREATE TABLE combustivel (
-    idcombustivel   NUMBER(4) PRIMARY KEY,
-    tipo            VARCHAR2(100),
-    precolitro      NUMBER(8, 2)
+    idcombustivel NUMBER(4) PRIMARY KEY,
+    tipo VARCHAR2(100),
+    precolitro NUMBER(8, 2)
 );
 
 CREATE TABLE formapagamento (
-    idpagamento     NUMBER(4) PRIMARY KEY,
-    descricaotipo   VARCHAR2(100),
-    taxa            NUMBER(8, 2)
+    idpagamento NUMBER(4) PRIMARY KEY,
+    descricaotipo VARCHAR2(100),
+    taxa NUMBER(8, 2)
 );
 
 CREATE TABLE funcionario (
-    cpf             VARCHAR2(12) PRIMARY KEY,
-    nome            VARCHAR2(100),
-    telefone        VARCHAR2(20),
-    cargo           VARCHAR2(80),
-    posto_cnpj      VARCHAR2(15) NOT NULL
+    cpf VARCHAR2(12) PRIMARY KEY,
+    nome VARCHAR2(100),
+    telefone VARCHAR2(20),
+    cargo VARCHAR2(80),
+    posto_cnpj VARCHAR2(15) NOT NULL
 );
 
 CREATE TABLE nota_pagamento (
-    formapagamento_idpagamento  NUMBER(4) NOT NULL,
-    notafiscal_idnota           NUMBER(4) NOT NULL,
+    formapagamento_idpagamento NUMBER(4) NOT NULL,
+    notafiscal_idnota NUMBER(4) NOT NULL,
     PRIMARY KEY (formapagamento_idpagamento, notafiscal_idnota)
 );
 
 CREATE TABLE notafiscal (
-    idnota          NUMBER(4) PRIMARY KEY,
-    dataemissao     DATE,
-    status          VARCHAR2(20),
-    venda_idvenda   NUMBER(4) NOT NULL,
-    valortotal      NUMBER(10, 2)
+    idnota NUMBER(4) PRIMARY KEY,
+    dataemissao DATE,
+    status VARCHAR2(20),
+    venda_idvenda NUMBER(4) NOT NULL,
+    valortotal NUMBER(10, 2)
 );
 
 CREATE TABLE posto (
-    cnpj                    VARCHAR2(15) PRIMARY KEY,
-    nome                    VARCHAR2(100),
-    horario_funcionamento    VARCHAR2(50),
-    endereco                VARCHAR2(150)
+    cnpj VARCHAR2(15) PRIMARY KEY,
+    nome VARCHAR2(100),
+    horario_funcionamento VARCHAR2(50),
+    endereco VARCHAR2(150)
 );
 
 CREATE TABLE produto (
-    idproduto   NUMBER(4) PRIMARY KEY,
-    nome        VARCHAR2(50),
-    preco       NUMBER(8, 2)
+    idproduto NUMBER(4) PRIMARY KEY,
+    nome VARCHAR2(50),
+    preco NUMBER(8, 2)
 );
 
 CREATE TABLE servico (
-    idservico           NUMBER(4) PRIMARY KEY,
-    nome                VARCHAR2(100),
-    preco               NUMBER(8, 2),
-    descricao           VARCHAR2(150),
-    produto_idproduto   NUMBER(4) NOT NULL
+    idservico NUMBER(4) PRIMARY KEY,
+    nome VARCHAR2(100),
+    preco NUMBER(8, 2),
+    descricao VARCHAR2(150),
+    produto_idproduto NUMBER(4) NOT NULL
 );
 
 CREATE TABLE tanque (
-    idtanque        NUMBER(4) PRIMARY KEY,
-    capacidade      NUMBER(10, 2),
-    datainstalacao  DATE
+    idtanque NUMBER(4) PRIMARY KEY,
+    capacidade NUMBER(10, 2),
+    datainstalacao DATE
 );
 
 CREATE TABLE venda (
-    idvenda             NUMBER(4) PRIMARY KEY,
-    datavenda           DATE,
-    quantidadelitro     NUMBER(10, 2),
-    posto_cnpj          VARCHAR2(15) NOT NULL,
-    servico_idservico   NUMBER(4) NOT NULL,
-    bomba_idbomba       NUMBER(4) NOT NULL
+    idvenda NUMBER(4) PRIMARY KEY,
+    datavenda DATE,
+    quantidadelitro NUMBER(10, 2),
+    posto_cnpj VARCHAR2(15) NOT NULL,
+    servico_idservico NUMBER(4) NOT NULL,
+    bomba_idbomba NUMBER(4) NOT NULL
 );
 
 -- Relacionamentos (Foreign Keys)
@@ -129,3 +129,6 @@ ALTER TABLE venda
 ALTER TABLE venda
     ADD CONSTRAINT fk_venda_servico FOREIGN KEY (servico_idservico)
     REFERENCES servico (idservico);
+
+
+/*INSERTS 5 EM CADA TABELA*/
