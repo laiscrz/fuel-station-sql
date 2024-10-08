@@ -327,6 +327,19 @@ BEGIN
 END;
 SELECT media_preco_combustivel AS media_combustivel FROM dual; -- EXECUTA
 
+-- calcular_valor_produtos_servicos
+CREATE OR REPLACE FUNCTION calcular_valor_produtos_servicos RETURN NUMBER AS
+    v_valor_total NUMBER := 0;
+BEGIN
+    SELECT SUM(p.preco)  -- Considerando que a soma do preço dos produtos utilizados
+    INTO v_valor_total
+    FROM servico s
+    JOIN produto p ON s.produto_idproduto = p.idproduto;  -- Alterado para o nome correto da coluna
+
+    RETURN NVL(v_valor_total, 0);  -- Retorna 0 se não houver serviços
+END calcular_valor_produtos_servicos;
+
+
 /* -------------------------- PROCEDURES -------------------------- */
 -- registrar_venda
 CREATE OR REPLACE PROCEDURE registrar_venda(
@@ -409,6 +422,38 @@ BEGIN
     gerar_relatorio_vendas_posto('52307684000172'); -- EXECUTA
 END;
 
+-- gerar_relatorio_servico_produto
+CREATE OR REPLACE PROCEDURE gerar_relatorio_servico_produto AS
+    CURSOR c_produtos IS
+        SELECT nome, preco FROM produto;
+
+    v_nome_produto produto.nome%TYPE;
+    v_preco_unitario produto.preco%TYPE;
+
+    v_valor_total_produtos NUMBER;
+
+BEGIN
+    -- Relatório de Produtos
+    DBMS_OUTPUT.PUT_LINE('----- Relatório de Produtos -----');
+    OPEN c_produtos;
+    LOOP
+        FETCH c_produtos INTO v_nome_produto, v_preco_unitario;
+        EXIT WHEN c_produtos%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Produto: ' || v_nome_produto || 
+                             ', Preço Unitário: R$ ' || v_preco_unitario);
+    END LOOP;
+    CLOSE c_produtos;
+
+    -- Cálculo do valor dos produtos utilizados em serviços
+    v_valor_total_produtos := calcular_valor_produtos_servicos();
+
+    DBMS_OUTPUT.PUT_LINE('----- Valor Total dos Produtos Utilizados em Serviços -----');
+    DBMS_OUTPUT.PUT_LINE('Valor Total: R$ ' || v_valor_total_produtos);
+
+END gerar_relatorio_servico_produto;
+BEGIN
+    gerar_relatorio_servico_produto; -- Chama o procedimento para gerar o relatório
+END;
 
 
 /* -------------------------- PACKAGE  -------------------------- */
