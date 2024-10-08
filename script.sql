@@ -603,7 +603,7 @@ FROM dual;
 
 
 --Obter o Total de Vendas de um Posto com um Determinado CNPJ
-SELECT posto_pkg.total_vendas_posto('12345678901234') AS total_vendas
+SELECT posto_pkg.total_vendas_posto('52307684000172') AS total_vendas
 FROM dual;
 
 
@@ -619,7 +619,7 @@ FROM dual;
 
 --Chamar o Procedimento para Gerar um Relatório de Vendas do Posto
 BEGIN
-    posto_pkg.gerar_relatorio_vendas_posto('12345678901234');
+    posto_pkg.gerar_relatorio_vendas_posto('52307684000172');
 END;
 /
 
@@ -630,7 +630,7 @@ SELECT
     v.datavenda,
     posto_pkg.calcular_valor_total(v.idvenda) AS valor_total
 FROM venda v
-WHERE v.posto_cnpj = '12345678901234';
+WHERE v.posto_cnpj = '52307684000172';
 
 
 
