@@ -46,6 +46,15 @@ Aqui estão as principais tabelas que compõem o banco de dados:
 ### 🔗 Relacionamentos
 O banco de dados inclui diversas **chaves estrangeiras** para garantir a integridade referencial entre as tabelas, conectando bombas a combustíveis, vendas a postos, e muito mais.
 
+## 📊 Diagramas
+
+### Diagrama Entidade-Relacionamento Lógico
+![Diagrama Entidade-Relacionamento Lógico](https://github.com/user-attachments/assets/82bf8478-0993-4f25-b74f-4da44d93de57)
+
+
+### Diagrama Entidade-Relacionamento Relacional
+![Diagrama Entidade-Relacionamento Relacional](https://github.com/user-attachments/assets/5f51c6ad-22e7-41cf-b5e1-61e107dec0ad)
+
 
 ## 📅 Exemplos de Uso
 - **Registrar uma venda** 💵
