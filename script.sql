@@ -255,6 +255,8 @@ INSERT INTO nota_pagamento (formapagamento_idpagamento, notafiscal_idnota) VALUE
 INSERT INTO nota_pagamento (formapagamento_idpagamento, notafiscal_idnota) VALUES (4, 4);
 INSERT INTO nota_pagamento (formapagamento_idpagamento, notafiscal_idnota) VALUES (5, 5);
 
+/* Salvando Alterações*/
+COMMIT;
 
 /* SELECT TABLES */
 SELECT * FROM bomba;
