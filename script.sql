@@ -477,7 +477,7 @@ CREATE OR REPLACE PACKAGE posto_pkg IS
     );
     PROCEDURE gerar_relatorio_vendas_posto(p_cnpj VARCHAR2);
 END posto_pkg;
-/
+
 
 /*Corpo do Package*/
 
@@ -593,7 +593,7 @@ CREATE OR REPLACE PACKAGE BODY posto_pkg IS
     END gerar_relatorio_vendas_posto;
     
 END posto_pkg;
-/
+
 
 /* Exemplos de uso de funções e procedimentos do package */
 
@@ -621,7 +621,7 @@ FROM dual;
 BEGIN
     posto_pkg.gerar_relatorio_vendas_posto('52307684000172');
 END;
-/
+
 
 
 --Usar as Funções do Package em um Relatório Customizado
@@ -631,11 +631,4 @@ SELECT
     posto_pkg.calcular_valor_total(v.idvenda) AS valor_total
 FROM venda v
 WHERE v.posto_cnpj = '52307684000172';
-
-
-
-
-
-
-
 
