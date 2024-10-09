@@ -331,10 +331,10 @@ SELECT media_preco_combustivel AS media_combustivel FROM dual; -- EXECUTA
 CREATE OR REPLACE FUNCTION calcular_valor_produtos_servicos RETURN NUMBER AS
     v_valor_total NUMBER := 0;
 BEGIN
-    SELECT SUM(p.preco)  -- Considerando que a soma do preço dos produtos utilizados
+    SELECT SUM(p.preco)  
     INTO v_valor_total
     FROM servico s
-    JOIN produto p ON s.produto_idproduto = p.idproduto;  -- Alterado para o nome correto da coluna
+    JOIN produto p ON s.produto_idproduto = p.idproduto; 
 
     RETURN NVL(v_valor_total, 0);  -- Retorna 0 se não houver serviços
 END calcular_valor_produtos_servicos;
