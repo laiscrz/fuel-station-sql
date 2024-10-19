@@ -67,7 +67,7 @@ O banco de dados inclui diversas **chaves estrangeiras** para garantir a integri
 
 ## 🫂 Integrantes
 
-Aqui estão os membros do grupo que participaram durante desenvolvimento desta CHECKPOINT.
+Aqui estão os membros do grupo que participaram durante desenvolvimento deste CHECKPOINT.
 
 * **RM 552267 - Bianca Leticia Román Caldeira**
   - Turma: 2TDSPH
